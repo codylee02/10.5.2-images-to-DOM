@@ -8,11 +8,29 @@ function getDogImages(imageCount) {
         .catch(error => alert('Something went wrong. Try again later.'));
 }
 
+
 function makeImageString(responseJson) {
-    let imageString = ``;
-    for (let i = 0; i < responseJson.message.length; i++) {
-        imageString += `<img src="${responseJson.message[i]}">`;
-    };
+    
+    // let imageString = responseJson.message.reduce((accumulator, val) => {
+    //     return accumulator += `<img src ="${val}">`;
+    // });
+
+   // let imageString = responseJson.message.reduce(function(sum, ))
+
+    function getSum(total, num) {
+        return `<img src=${total}>` + `<img src=${num}>`;
+    }
+
+    let currentVal = "";
+    let imageString = responseJson.message.reduce(getSum);
+    // let imageString = ``;
+    // responseJson.message.reduce((accumulator) => {
+    //     imageString += `<img src ="${accumulator}">`;
+    // });
+
+    // for (let i = 0; i < responseJson.message.length; i++) {
+    //     imageString += `<img src="${responseJson.message[i]}">`;
+    // };
     displayImages(imageString);
 }
 
